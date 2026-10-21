@@ -238,7 +238,7 @@ cdef class device:
             raise ValueError("device not open")
         result = chid.hid_get_queue_stats(self._c_hid, &received, &dropped, &max_queue)
         if result != 0:
-            raise IOError("Cannot read HIDAPI queue statistics")
+            raise IOError("Queue statistics unavailable for this HIDAPI library or backend")
         return {"received": received, "dropped": dropped, "max_queue": max_queue}
 
     def read(self, int max_length, int timeout_ms=0):

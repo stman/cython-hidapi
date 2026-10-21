@@ -36,6 +36,13 @@ cdef extern from "<hidapi.h>":
     hid_device* hid_open(unsigned short, unsigned short, const wchar_t*)
     hid_device* hid_open_path(char *path)
     void hid_close(hid_device *)
+
+    int hid_get_queue_stats(
+        hid_device*,
+        unsigned long long*,
+        unsigned long long*,
+        unsigned int*
+    )
     int hid_init()
     int hid_exit()
     int hid_write(hid_device* device, unsigned char *data, int length) nogil
